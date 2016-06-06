@@ -30,6 +30,9 @@
     (when (not (package-installed-p pkg))
       (package-install pkg))))
 
+;; Load theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
 ;; Splash screen
 ;; Skip to scratch buffer
 (setq inhibit-splash-screen t
@@ -41,6 +44,7 @@
 
 (setq visible-bell t) ;; Turn off system beep
 (setq font-lock-maximum-decoration t) ;; Maximum colors
+(setq echo-keystrokes 0.1) ;; Turn down time to echo keystrokes
 
 ;; Marking text to treat regions like other text editors
 (delete-selection-mode t)
@@ -73,3 +77,17 @@
 ;; Key bindings
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+	("a71be4e5e9e418025daea651f8a1628953abb7af505da5e556e95061b6a6e389" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
