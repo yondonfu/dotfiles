@@ -14,7 +14,8 @@
 
 ;; Packages
 (defvar yondon/packages '(auto-complete
-						  autopair)
+						  autopair
+						  rvm)
   "Default packages")
 
 ;; Install default packages
@@ -91,3 +92,19 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Ruby
+(add-hook 'ruby-mode-hook
+		  (lambda ()
+			(autopair-mode)))
+
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
+
+(rvm-use-default) ;; Enable RVM mode and use default Ruby
