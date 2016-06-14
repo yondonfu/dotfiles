@@ -9,10 +9,6 @@
 
 (package-initialize)
 
-;; User Info
-(setq user-full-name "Yondon Fu")
-(setq user-mail-address "yondon.fu@gmail.com")
-
 ;; Packages
 (defvar yondon/packages '(auto-complete
 			  autopair
@@ -23,6 +19,7 @@
 				sass-mode
 				scss-mode
 			  robe
+				smartparens
 			  zenburn-theme)
   "Default packages")
 
@@ -85,6 +82,10 @@
 (require 'auto-complete-config) ;; Turn on auto complete
 (ac-config-default)
 
+(require 'smartparens-config)
+(smartparens-global-mode)
+(show-smartparens-global-mode t)
+
 (setq make-backup-files nil) ;; Turn off backup files
 
 ;; See when file actually ends
@@ -120,31 +121,7 @@
 (global-set-key (kbd "s-p") 'projectile-find-file) ;; Cmd-p for fuzzy find in project
 (global-set-key (kbd "s-b") 'projectile-switch-to-buffer) ;; Cmd-b for fuzzy switch buffer
 
+;; Load custom configs
+(add-to-list 'load-path "~/.emacs.d/custom")
 
-;; Ruby
-(add-hook 'ruby-mode-hook
-		  (lambda ()
-				(autopair-mode)))
-
-(require 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
-
-;; HTML
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(load "ruby.el")
