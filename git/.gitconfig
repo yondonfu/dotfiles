@@ -1,0 +1,17 @@
+[user]
+	email = yondon.fu@gmail.com
+	name = Yondon Fu
+
+[hub]
+protocol = https
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[core]
+excludesfile = /opt/boxen/config/git/gitignore
+
+[alias]
+s = status
+co = checkout
+mall = "!git up && git co stage && git merge master && git push origin stage && git co develop && git merge stage && git push origin develop"
