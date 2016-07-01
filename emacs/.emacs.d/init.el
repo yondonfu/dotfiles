@@ -38,7 +38,7 @@
 
 ;; Load theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'solarized-dark-terminal)
+(load-theme 'zenburn t)
 ;; Editorconfig
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'editorconfig)
@@ -58,6 +58,8 @@
 (setq echo-keystrokes 0.1) ;; Turn down time to echo keystrokes
 
 (windmove-default-keybindings) ;; Navigate between windows using alt-1, alt-2, shift-left, shift-up, shift-right
+
+(global-auto-revert-mode t) ;; Auto-refresh buffers when files change on disk
 
 ;; Marking text to treat regions like other text editors
 (delete-selection-mode t)
@@ -102,6 +104,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(indent-tabs-mode nil)
  '(custom-safe-themes
 	 (quote
 		("86096212283f66bca40bfe557f36eeb92446b31bac743be802cb5f19bfa1ce5a" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a71be4e5e9e418025daea651f8a1628953abb7af505da5e556e95061b6a6e389" default))))
@@ -124,3 +127,4 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 
 (load "ruby.el")
+(load "web.el")

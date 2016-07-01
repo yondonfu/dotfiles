@@ -12,6 +12,8 @@ helper = /opt/boxen/bin/boxen-git-credential
 excludesfile = /opt/boxen/config/git/gitignore
 
 [alias]
+b = branch
 s = status
 co = checkout
 mall = "!git up && git co stage && git merge master && git push origin stage && git co develop && git merge stage && git push origin develop"
+yolo = "!git add -A && git commit --amend --no-edit && git push -f"
