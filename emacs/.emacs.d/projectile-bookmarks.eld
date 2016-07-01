@@ -1,1 +1,0 @@
-("~/src/better-core/" "~/src/istanbul/" "~/src/projector-js/" "~/programming/dotfiles/")
