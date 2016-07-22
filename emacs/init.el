@@ -18,6 +18,7 @@
 			  web-mode
 				sass-mode
 				scss-mode
+        markdown-mode
 			  robe
 				smartparens
 			  zenburn-theme)
@@ -73,6 +74,12 @@
 
 ;; Remove trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(defun turn-off-delete-trailing-whitespace ()
+  (remove-hook 'before-save-hook 'delete-trailing-whitespace))
+
+;; Turn off delete trailing whitespace for Markdown mode
+(add-hook 'markdown-mode-hook 'turn-off-delete-trailing-whitespace)
 
 (setq column-number-mode t) ;; Turn on column numbers
 
