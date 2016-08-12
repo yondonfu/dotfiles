@@ -15,5 +15,6 @@ excludesfile = /opt/boxen/config/git/gitignore
 b = branch
 s = status
 co = checkout
+fpull = "!git fetch && git pull"
 mall = "!git up && git co stage && git merge master && git push origin stage && git co develop && git merge stage && git push origin develop"
 yolo = "!git add -A && git commit --amend --no-edit && git push -f"

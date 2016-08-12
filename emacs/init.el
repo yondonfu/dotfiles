@@ -14,7 +14,8 @@
 			  autopair
 			  projectile
 			  editorconfig
-			  grizzl
+        helm
+        helm-projectile
 			  web-mode
 				sass-mode
 				scss-mode
@@ -123,12 +124,13 @@
  )
 
 ;; Projectile
-(require 'grizzl)
+(require 'helm)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
-(setq projectile-completion-system 'grizzl) ;; Use grizzl completion mode
-(global-set-key (kbd "s-p") 'projectile-find-file) ;; Cmd-p for fuzzy find in project
-(global-set-key (kbd "s-b") 'projectile-switch-to-buffer) ;; Cmd-b for fuzzy switch buffer
+(setq projectile-completion-system 'helm) ;; Use helm completion mode
+(helm-projectile-on)
+
+(setq projectile-switch-project-action 'helm-projectile)
 
 ;; Load custom configs
 (add-to-list 'load-path "~/.emacs.d/custom")
