@@ -3,9 +3,15 @@
 
 ;; Add marmalade package archive
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+;; Add melpa package archive
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+;; Add elpy package archive
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
 
 (package-initialize)
 
@@ -13,15 +19,18 @@
 (defvar yondon/packages '(auto-complete
 			  autopair
 			  projectile
-			  editorconfig
         helm
         helm-projectile
+			  editorconfig
 			  web-mode
-				sass-mode
-				scss-mode
-        markdown-mode
+			  sass-mode
+			  scss-mode
+			  markdown-mode
 			  robe
-				smartparens
+			  smartparens
+        elpy
+        auctex
+        exec-path-from-shell
 			  zenburn-theme)
   "Default packages")
 
@@ -68,19 +77,13 @@
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t) ;; So system clipboard and Emacs clipboard get along
 
-;; Convert tabs to 4 spaces
+;; Convert tabs to 2 spaces
 (setq tab-width 2
       indent-tabs-mode nil)
 (setq-default tab-width 2)
 
 ;; Remove trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-(defun turn-off-delete-trailing-whitespace ()
-  (remove-hook 'before-save-hook 'delete-trailing-whitespace))
-
-;; Turn off delete trailing whitespace for Markdown mode
-(add-hook 'markdown-mode-hook 'turn-off-delete-trailing-whitespace)
 
 (setq column-number-mode t) ;; Turn on column numbers
 
@@ -135,5 +138,19 @@
 ;; Load custom configs
 (add-to-list 'load-path "~/.emacs.d/custom")
 
-(load "ruby.el")
-(load "web.el")
+;; Add path for pdflatex
+(setq exec-path (append exec-path '("/Library/TeX/texbin")))
+
+(load "custom_web.el")
+
+(add-hook 'python-mode-hook
+          (lambda()
+            (load "custom_python.el")))
+
+(add-hook 'ruby-mode-hook
+          (lambda()
+            (load "custom_ruby.el")))
+
+(add-hook 'markdown-mode-hook
+          (lambda()
+            (load "custom_markdown.el")))
