@@ -5,12 +5,6 @@
 [hub]
 protocol = https
 
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
-
-[core]
-excludesfile = /opt/boxen/config/git/gitignore
-
 [alias]
 b = branch
 s = status
