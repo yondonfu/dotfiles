@@ -26,7 +26,6 @@ if hasVundle == 0
   :PluginInstall
 endif
 
-set background=light
 set t_Co=256
 
 filetype plugin indent on
@@ -35,6 +34,7 @@ syntax on
 syntax enable
 
 let g:solarized_termcolors=256
+set background=light
 colorscheme solarized
 
 "Backups and swap files in different dir
