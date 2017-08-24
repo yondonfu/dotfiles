@@ -8,5 +8,5 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
 
 # Setting PATH for Go
-export GOPATH="$HOME/gocode"
+export GOPATH="$HOME/Development/go"
 export PATH="$PATH:$GOPATH/bin"
