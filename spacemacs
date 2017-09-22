@@ -269,7 +269,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -319,6 +319,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; toggle indent guide globally
+  (spacemacs/toggle-indent-guide-globally-on)
   ;; editorconfig hook
   (add-hook 'after-change-major-mode-hook 'editorconfig-apply 'append)
   ;; js2-mode
@@ -340,14 +342,14 @@ you should place your code here."
   (add-hook 'flycheck-mode-hook #'my/use-local-eslint)
 
   ;; use Solium for Solidity syntax checker
-  (flycheck-define-checker solidity-solium
-    "A Solidity syntax checker using Solium"
-    :command ("solium" "--file" (expand-file-name source))
-    :error-patterns
-    ((error line-start (file-name) ":" line ": error: " (message) line-end))
-    :modes solidity-mode)
+  ;; (flycheck-define-checker solidity-solium
+  ;;   "A Solidity syntax checker using Solium"
+  ;;   :command ("solium" "--file" (expand-file-name source))
+  ;;   :error-patterns
+  ;;   ((error line-start (file-name) ":" line ": error: " (message) line-end))
+  ;;   :modes solidity-mode)
   ;; register Solidity syntax checker
-  (add-to-list 'flycheck-checkers 'solidity-solium)
+  ;; (add-to-list 'flycheck-checkers 'solidity-solium)
 
   ;; use local solium from node_modules before global
   ;; (defun my/use-local-solium ()
