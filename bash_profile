@@ -10,3 +10,5 @@ export PATH
 # Setting PATH for Go
 export GOPATH="$HOME/Development/go"
 export PATH="$PATH:$GOPATH/bin"
+
+export PATH="$HOME/.cargo/bin:$PATH"
